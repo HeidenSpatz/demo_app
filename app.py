@@ -2,7 +2,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import geemap.foliumap as geemap
+#import geemap.foliumap as geemap
 
 #OpenStreetMap API for geocoding
 import geopy
@@ -142,29 +142,29 @@ st.plotly_chart(fig2, use_container_width=True)
 
 #------------------
 # geemap
-m = geemap.Map(center=[50.130, 8.692], zoom=16)
+# m = geemap.Map(center=[50.130, 8.692], zoom=16)
 
 
-geolocator = Nominatim(user_agent="my_user_agent")
-geocode = RateLimiter(geolocator.geocode, min_delay_seconds=2)
+# geolocator = Nominatim(user_agent="my_user_agent")
+# geocode = RateLimiter(geolocator.geocode, min_delay_seconds=2)
 
-address = street + " " + housenr + ", " + city + " " + zip
+# address = street + " " + housenr + ", " + city + " " + zip
 
-if len(address) > 5:
+# if len(address) > 5:
     
-    location = geolocator.geocode(address)
+#     location = geolocator.geocode(address)
 
-    lat = location.latitude
-    lon = location.longitude
+#     lat = location.latitude
+#     lon = location.longitude
 
-    st.write(location.address)
-    st.write(lat, lon)
-    #st.write(f"Lat, Lon: {lat}, {lon}")
-    #st.write(location.raw)
-    popup = f"lat, lon: {lat}, {lon}"
+#     st.write(location.address)
+#     st.write(lat, lon)
+#     #st.write(f"Lat, Lon: {lat}, {lon}")
+#     #st.write(location.raw)
+#     popup = f"lat, lon: {lat}, {lon}"
     
-    m.add_marker(location=(lat, lon), popup=popup)
-    m.setCenter(lon=lon,lat=lat, zoom=16)
-    m.to_streamlit(height=600)
-else:
-    m.to_streamlit(height=600)
+#     m.add_marker(location=(lat, lon), popup=popup)
+#     m.setCenter(lon=lon,lat=lat, zoom=16)
+#     m.to_streamlit(height=600)
+# else:
+#     m.to_streamlit(height=600)
