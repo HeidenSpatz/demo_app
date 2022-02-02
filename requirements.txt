@@ -204,7 +204,7 @@ pcre=8.45=h295c915_0
 pexpect=4.8.0=pyhd3eb1b0_3
 pickleshare=0.7.5=pyhd3eb1b0_1003
 pillow=8.4.0=pypi_0
-pip=21.2.4=py39h06a4308_0
+pip=22.0.2=pypi_0
 plotly=5.5.0=pypi_0
 prometheus_client=0.12.0=pyhd3eb1b0_0
 prompt-toolkit=3.0.20=pyhd3eb1b0_0
