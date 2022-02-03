@@ -12,7 +12,7 @@ from geopy.extra.rate_limiter import RateLimiter
 
 #------------------
 # config
-st.set_page_config(page_title='my app',
+st.set_page_config(page_title='Demo App - Bachelor',
                     #page_icon=":shark:",
                     layout='wide')
                     #menu_items: Get help, Report a Bug, About
@@ -39,7 +39,7 @@ coeff = read_csv("~/code/data_app/coefficient.csv")
 
 #------------------
 #title
-st.title("title: geo exploration")
+st.title("Demo App - Geo Exploration")
 st.dataframe(coeff)
 st.button("Re-run")
 
