@@ -19,22 +19,33 @@ st.title("a simple demo app")
 
 
 
-# Create a connection object.
-conn = connect()
+# Share the connector across all users connected to the app
+@st.experimental_singleton()
+def get_connector():
+    return connect()
 
-# Perform SQL query on the Google Sheet.
+# Time to live: the maximum number of seconds to keep an entry in the cache
+TTL = 24 * 60 * 60
 
-@st.cache(ttl=600)
-def run_query(query):
-    rows = conn.execute(query, headers=1)
-    return rows
+# Using `experimental_memo()` to memoize function executions
+@st.experimental_memo(ttl=TTL)
+def query_to_dataframe(_connector, query: str) -> pd.DataFrame:
+    rows = _connector.execute(query, headers=1)
+    dataframe = pd.DataFrame(list(rows))
+    return dataframe
 
-sheet_url = st.secrets["public_gsheets_url"]
-rows = run_query(f'SELECT * FROM "{sheet_url}"')
+@st.experimental_memo(ttl=600)
+def get_data(_connector, gsheets_url) -> pd.DataFrame:
+    return query_to_dataframe(_connector, f'SELECT * FROM "{gsheets_url}"')
 
-# Print results.
-for row in rows:
-    st.write(f"{row.name} has a :{row.pet}:")
+st.markdown(f"## 📝 Connecting to a public Google Sheet")
+
+gsheet_connector = get_connector()
+gsheets_url = st.secrets["gsheets"]["public_gsheets_url"]
+
+data = get_data(gsheet_connector, gsheets_url)
+st.write("👇 Find below the data in the Google Sheet you provided in the secrets:")
+st.dataframe(data)
 
 
 
