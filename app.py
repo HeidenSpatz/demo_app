@@ -23,5 +23,20 @@ if uploaded_file is not None:
     # todo: if not csv
 
      # Can be used wherever a "file-like" object is accepted:
-     dataframe = pd.read_csv(uploaded_file)
-     st.write("row, cols: ", dataframe.shape)
+     df = pd.read_csv(uploaded_file)
+
+
+#data overview
+st.header("Overview")
+st.write("rows: ", df.shape[0], "cols: ", df.shape[1])
+st.write(df.columns)
+
+
+#show available columns
+st.subheader("Column names")
+column_names = ""
+for column in pd.Series(df.columns):
+    column_names = column_names + ", " + column
+
+st.write(column_names)
+
