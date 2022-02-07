@@ -1,7 +1,8 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from io import StringIO
+
+from gsheetsdb import connect
 
 
 
@@ -16,22 +17,26 @@ st.set_page_config(page_title='my app',
 
 st.title("a simple demo app")
 
-#get data
-df = pd.read_csv("immo.csv.zip")
-
-#data overview
-st.header("Overview")
-st.write("rows: ", df.shape[0], "cols: ", df.shape[1])
-st.write(df.columns)
 
 
-#show available columns
-st.subheader("Column names")
-column_names = ""
-for column in pd.Series(df.columns):
-    column_names = column_names + ", " + column
+# Create a connection object.
+conn = connect()
 
-st.write(column_names)
+# Perform SQL query on the Google Sheet.
+
+@st.cache(ttl=600)
+def run_query(query):
+    rows = conn.execute(query, headers=1)
+    return rows
+
+sheet_url = st.secrets["public_gsheets_url"]
+rows = run_query(f'SELECT * FROM "{sheet_url}"')
+
+# Print results.
+for row in rows:
+    st.write(f"{row.name} has a :{row.pet}:")
+
+
 
 
 
