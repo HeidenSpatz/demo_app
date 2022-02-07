@@ -17,8 +17,7 @@ st.set_page_config(page_title='my app',
 st.title("a simple demo app")
 
 #get data
-file_path = "~/code/demo_app/immo.csv"
-df = pd.read_csv(file_path)
+df = pd.read_csv("immo.csv.zip")
 
 #data overview
 st.header("Overview")
