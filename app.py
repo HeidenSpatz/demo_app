@@ -16,30 +16,25 @@ st.set_page_config(page_title='my app',
 
 st.title("a simple demo app")
 
-df = pd.DataFrame()
+#get data
+file_path = "~/code/demo_app/immo.csv"
+df = pd.read_csv(file_path)
 
-uploaded_file = st.file_uploader("Choose a file")
-
-if uploaded_file is not None:
-
-    # todo: if not csv
-
-    # Can be used wherever a "file-like" object is accepted:
-    df = pd.read_csv(uploaded_file)
-
-    #data overview
-    st.header("Overview")
-    st.write("rows: ", df.shape[0], "cols: ", df.shape[1])
-    st.write(df.columns)
+#data overview
+st.header("Overview")
+st.write("rows: ", df.shape[0], "cols: ", df.shape[1])
+st.write(df.columns)
 
 
-    #show available columns
-    st.subheader("Column names")
-    column_names = ""
-    for column in pd.Series(df.columns):
-        column_names = column_names + ", " + column
+#show available columns
+st.subheader("Column names")
+column_names = ""
+for column in pd.Series(df.columns):
+    column_names = column_names + ", " + column
 
-    st.write(column_names)
+st.write(column_names)
+
+
 
 
 
