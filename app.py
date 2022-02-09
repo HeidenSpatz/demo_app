@@ -43,7 +43,12 @@ gsheet_connector = get_connector()
 gsheets_url = st.secrets["gsheets"]["public_gsheets_url"]
 
 data = get_data(gsheet_connector, gsheets_url)
-st.dataframe(data)
+
+df = pd.DataFrame(data)
+
+col_names = list(df.columns)
+
+st.selectbox("Select Column", col_names, 0)
 
 
 
