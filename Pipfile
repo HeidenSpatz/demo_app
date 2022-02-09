@@ -10,6 +10,7 @@ google-api-python-client = "*"
 pandas = "*"
 matplotlib = "*"
 plotly = "*"
+scipy = "*"
 
 [dev-packages]
 
