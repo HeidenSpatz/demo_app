@@ -1,2 +1,6 @@
 # Streamlit
 .streamlit
+
+
+# pip lock file
+/home/ace/code/demo_app.Pipfile.lock
