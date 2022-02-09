@@ -48,7 +48,9 @@ df = pd.DataFrame(data)
 
 col_names = list(df.columns)
 
-st.selectbox("Select Column", col_names, 0)
+col_selected = st.selectbox("Select Column", col_names, 0)
+
+st.write(col_selected)
 
 
 
