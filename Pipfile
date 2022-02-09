@@ -8,6 +8,8 @@ streamlit = "*"
 gsheetsdb = "*"
 google-api-python-client = "*"
 pandas = "*"
+matplotlib = "*"
+plotly = "*"
 
 [dev-packages]
 
