@@ -8,7 +8,7 @@ from gsheetsdb import connect
 
 #------------------
 # config
-st.set_page_config(page_title='my app',
+st.set_page_config(page_title='Data Exploration',
                     #page_icon=":shark:",
                     layout='wide')
                     #menu_items: Get help, Report a Bug, About
