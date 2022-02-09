@@ -15,7 +15,7 @@ st.set_page_config(page_title='my app',
 
 
 
-st.title("a simple demo app")
+st.title("Demo - Data Exploration")
 
 
 
