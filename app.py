@@ -14,7 +14,7 @@ st.set_page_config(page_title='Data Exploration',
 
 
 
-st.title("Demo - Data Exploration")
+st.title("Data Exploration - ImmoScout")
 
 
 
