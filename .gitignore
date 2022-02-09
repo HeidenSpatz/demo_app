@@ -3,4 +3,7 @@
 
 
 # pip lock file
-/home/ace/code/demo_app.Pipfile.lock
+/home/ace/code/demo_app/Pipfile.lock
+
+
+/home/ace/code/demo_app/test
