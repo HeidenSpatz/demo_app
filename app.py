@@ -1,7 +1,6 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-
 from gsheetsdb import connect
 
 
@@ -44,7 +43,6 @@ gsheet_connector = get_connector()
 gsheets_url = st.secrets["gsheets"]["public_gsheets_url"]
 
 data = get_data(gsheet_connector, gsheets_url)
-st.write("👇 Find below the data in the Google Sheet you provided in the secrets:")
 st.dataframe(data)
 
 
