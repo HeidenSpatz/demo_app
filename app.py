@@ -46,7 +46,12 @@ data = get_data(gsheet_connector, gsheets_url)
 
 df = pd.DataFrame(data)
 
+st.write(df.describe())
+
+
 col_names = list(df.columns)
+
+
 
 col_selected = st.selectbox("Select Column", col_names, 0)
 
