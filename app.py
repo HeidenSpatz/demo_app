@@ -6,14 +6,12 @@ from gsheetsdb import connect
 
 
 
-#------------------
 # config
+#------------------
 st.set_page_config(page_title='Data Exploration',
-                    #page_icon=":shark:",
+                    page_icon=":shark:",
                     layout='wide')
                     #menu_items: Get help, Report a Bug, About
-
-
 
 st.title("Data Exploration - ImmoScout")
 
@@ -45,7 +43,12 @@ data = get_data(gsheet_connector, gsheets_url)
 df = pd.DataFrame(data)
 
 
+
+
+
+
 # overiew
+#------------------
 st.header("Overview")
 st.write(df.describe())
 
@@ -58,6 +61,31 @@ st.header("Select a column")
 col_names = list(df.columns)
 col_selected = st.selectbox("Select Column", col_names, 0)
 
+st.write(col_selected)
+st.write(df[col_selected])
+
+chart_data = pd.DataFrame(
+    df[col_selected],
+    columns=[col_selected])
+
+st.line_chart(df[col_selected])
+
+
+chart_data = pd.DataFrame(
+     np.random.randn(20, 3),
+     columns=['a', 'b', 'c'])
+
+st.write(chart_data)
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -65,17 +93,17 @@ col_selected = st.selectbox("Select Column", col_names, 0)
 #------------------
 # chart
     
-import plotly.graph_objects as go
+#import plotly.graph_objects as go
 
 #X = df[col_selected].nlargest(10)
 #st.write(X)
 
-fig = go.Figure(go.Bar(
-            x=[20, 14, 23],
-            y=['giraffes', 'orangutans', 'monkeys'],
-            marker_color='skyblue',
-            orientation='h'))
-st.plotly_chart(fig, use_container_width=True)
+# fig = go.Figure(go.Bar(
+#             x=[20, 14, 23],
+#             y=['giraffes', 'orangutans', 'monkeys'],
+#             marker_color='skyblue',
+#             orientation='h'))
+# st.plotly_chart(fig, use_container_width=True)
 
 # fig2 = go.Figure(go.Bar(
 #             x=coeff['Coefficient'],
